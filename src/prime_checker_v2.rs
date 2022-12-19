@@ -22,7 +22,7 @@ fn check_if_prime(num: i128) -> (bool, Vec<i128>){
     return (flag, factors);
 }
 
-pub fn check_one_number(num: i128){
+fn check_one_number(num: i128){
     let known_prime_numbers: [i128; 7] = [2,3,5,7,11,13,17]; //List of known prime number; reduces processing time.
 
     // If the passed number is in the array of known prime numbers, immediately return true, no need to check further.
@@ -45,7 +45,7 @@ pub fn check_one_number(num: i128){
 
 }
 
-pub fn check_till(num: i128){
+fn check_till(num: i128){
     let mut prime_numbers:Vec<i128> = Vec::new();
     prime_numbers.push(2);
     prime_numbers.push(3);
