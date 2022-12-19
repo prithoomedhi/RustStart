@@ -28,6 +28,7 @@ fn check_one_number(num: i128){
     // If the passed number is in the array of known prime numbers, immediately return true, no need to check further.
     if known_prime_numbers.contains(&num){
         println!("{num} is a commonly known prime number.", num=num);
+        return
     }
 
     let result:bool;
@@ -52,7 +53,8 @@ fn check_till(num: i128){
     prime_numbers.push(5);
 
     if num <=5 {
-        println!("Please enter a number greater than 5.")
+        println!("Please enter a number greater than 5.");
+        return
     }
 
     let start:i128 = 6;
@@ -69,6 +71,7 @@ fn check_till(num: i128){
     }
 
     println!("The list of prime numbers til {} is {:?}.", num, prime_numbers);
+    return
 
 }
 
