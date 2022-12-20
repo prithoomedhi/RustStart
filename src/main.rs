@@ -4,8 +4,8 @@ mod check_if_prime;
 mod prime_checker_v2;
 
 fn main() {
-    let num: i128 = 4096;
-    let option:i128 = 2;
+    let num: i128 = 11;
+    let option:i128 = 1;
     print::run();
     vars::run();
     check_if_prime::run(num);

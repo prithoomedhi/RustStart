@@ -1,9 +1,16 @@
 fn check_if_prime(num: i128) -> (bool, Vec<i128>){
+    let known_prime_numbers: [i128; 7] = [2,3,5,7,11,13,17]; //List of known prime number; reduces processing time.
+
     let upper_limit: i128 = (num/2) + 1; //We do not need to check beyond the num/2 factor as it will be its highest possible factor.
     let mut divisor: i128 = 2; //Initialize the factor as 2.
     let mut flag:bool = true; //Default state of the flag: true-> isPrime; false-> notPrime.
 
     let mut factors: Vec<i128> = Vec::new(); //Initialize an empty list of factors.
+
+    if known_prime_numbers.contains(&num){
+        flag = true;
+        return (flag,factors);
+    }
 
     // Check all possible factors from 2 to num/2 and if a factor is found, add that value to the list of known factors.
     while divisor < upper_limit{
@@ -23,14 +30,6 @@ fn check_if_prime(num: i128) -> (bool, Vec<i128>){
 }
 
 fn check_one_number(num: i128){
-    let known_prime_numbers: [i128; 7] = [2,3,5,7,11,13,17]; //List of known prime number; reduces processing time.
-
-    // If the passed number is in the array of known prime numbers, immediately return true, no need to check further.
-    if known_prime_numbers.contains(&num){
-        println!("{num} is a commonly known prime number.", num=num);
-        return
-    }
-
     let result:bool;
     let factors:Vec<i128>;
 
