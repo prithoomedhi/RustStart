@@ -31,6 +31,10 @@ fn check_if_prime(num: i128) -> (bool, Vec<i128>){
     if factors.len() == 0{
         factors.push(1);
         factors.push(num);
+
+        // To handle a unique case with 1.
+        factors = utils::unique_elements_vector(factors);
+        factors.sort();
         println!("Factors of {num}: {factors:?}", num=num, factors=factors);
     }
     else if factors.len() > 0{
@@ -56,9 +60,11 @@ fn check_if_prime(num: i128) -> (bool, Vec<i128>){
 
 fn check_one_number(num: i128){
     let result:bool;
-    let factors:Vec<i128>;
+    let mut factors:Vec<i128>;
 
     (result, factors) = check_if_prime(num);
+    factors = utils::unique_elements_vector(factors);
+    factors.sort();
 
     if result==false{
         println!("{num} is not a prime number; it's factors are: {factors:?}", num=num, factors=factors);
@@ -70,15 +76,13 @@ fn check_one_number(num: i128){
 
 }
 
-fn check_till(num: i128)->Vec<i128>{
+fn check_till(_num: i128)->Vec<i128>{
+    let num: i128 = _num.abs();
     let mut prime_numbers:Vec<i128> = Vec::new();
     for item in constants::KNOWN_PRIMES{
-        prime_numbers.push(item);
-    }
-
-    if num <=5 {
-        println!("Please enter a number greater than 5.");
-        return Vec::new();
+        if item<=num{
+            prime_numbers.push(item);
+        }
     }
 
     println!("{:?} are commonly known prime numbers; skipping checking them individually...", prime_numbers);
@@ -101,18 +105,23 @@ fn check_till(num: i128)->Vec<i128>{
 
 }
 
-pub fn run(option:i128, num:i128){
-    // 1. Check if the number is a prime number and if not, display the set of factors.
-    // 2. Find all prime numbers until the given number.
+pub fn run(option:i128, _num: i128){
+    //! 1. Check if the number is a prime number and if not, display the set of factors.
+    //! 2. Find all prime numbers until the given number.
 
     println!("\nHello from the `prime_checker_v2.rs` file.");
+    let num:i128 = _num.abs();
 
     if option == 1{
         check_one_number(num);
     }
     else if option == 2{
         let primes: Vec<i128> = check_till(num);
-        println!("The list of prime numbers til {} is {:?}.", num, primes);
+        if primes.len() == 0{
+            println!("There are no prime numbers till {}.", num.abs());
+            return;
+        }
+        println!("The list of prime numbers til {} is {:?}.", num.abs(), primes);
     }
     else {
         println!("Invalid option.");
