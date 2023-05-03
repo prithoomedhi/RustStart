@@ -1,5 +1,8 @@
+use crate::constants::KNOWN_PRIMES;
+use crate::utils::unique_elements_vector;
+
 fn check_if_prime(num: i128) -> (bool, Vec<i128>){
-    let known_prime_numbers: [i128; 7] = [2,3,5,7,11,13,17]; //List of known prime number; reduces processing time.
+    let known_prime_numbers: [i128; 7] = KNOWN_PRIMES; //List of known prime number; reduces processing time.
 
     let upper_limit: i128 = (num/2) + 1; //We do not need to check beyond the num/2 factor as it will be its highest possible factor.
     let mut divisor: i128 = 2; //Initialize the factor as 2.
@@ -9,6 +12,8 @@ fn check_if_prime(num: i128) -> (bool, Vec<i128>){
 
     if known_prime_numbers.contains(&num){
         flag = true;
+        factors.push(1);
+        factors.push(num);
         return (flag,factors);
     }
 
@@ -21,7 +26,25 @@ fn check_if_prime(num: i128) -> (bool, Vec<i128>){
     }
 
     // If the list of known factors is not 0, then set flag as false.
-    if factors.len() > 0{
+    if factors.len() == 0{
+        factors.push(1);
+        factors.push(num);
+        println!("Factors of {num}: {factors:?}", num=num, factors=factors);
+    }
+    else if factors.len() > 0{
+        let mut new_factors: Vec<i128> = Vec::new();
+        
+        // Construct a new vector with 1 and num as the first and last elements respectively.
+        new_factors.push(1);
+        for item in factors{
+            new_factors.push(item);
+        }
+        new_factors.push(num);
+
+        // Update the list of factors to the new list of factors.
+        factors = new_factors;
+
+        println!("Factors of {num}: {factors:?}", num=num, factors=factors);
         flag = false;
     }
 
@@ -36,41 +59,43 @@ fn check_one_number(num: i128){
     (result, factors) = check_if_prime(num);
 
     if result==false{
-        println!("{} is not a prime number; it's factors are: {:?}", num, factors);
+        println!("{num} is not a prime number; it's factors are: {factors:?}", num=num, factors=factors);
     }
 
     else {
-        println!("{num} is a prime number.")
+        println!("{num} is a prime number; its only factors are {factors:?}.", num=num, factors=factors)
     }
 
 }
 
-fn check_till(num: i128){
+fn check_till(num: i128)->Vec<i128>{
     let mut prime_numbers:Vec<i128> = Vec::new();
-    prime_numbers.push(2);
-    prime_numbers.push(3);
-    prime_numbers.push(5);
+    for item in KNOWN_PRIMES{
+        prime_numbers.push(item);
+    }
 
     if num <=5 {
         println!("Please enter a number greater than 5.");
-        return
+        return Vec::new();
     }
+
+    println!("{:?} are commonly known prime numbers; skipping checking them individually...", prime_numbers);
 
     let start:i128 = 6;
 
     let mut result:bool;
     let mut _factors:Vec<i128> = Vec::new();
 
-    for i in start..num+1{
-        (result, _factors) = check_if_prime(i);
+    for item in start..num+1{
+        (result, _factors) = check_if_prime(item);
 
         if result == true{
-            prime_numbers.push(i);
+            prime_numbers.push(item);
         }
     }
-
-    println!("The list of prime numbers til {} is {:?}.", num, prime_numbers);
-    return
+    prime_numbers = unique_elements_vector(prime_numbers);
+    prime_numbers.sort();
+    return prime_numbers;
 
 }
 
@@ -84,9 +109,10 @@ pub fn run(option:i128, num:i128){
         check_one_number(num);
     }
     else if option == 2{
-        check_till(num);
+        let primes: Vec<i128> = check_till(num);
+        println!("The list of prime numbers til {} is {:?}.", num, primes);
     }
     else {
-        println!("Invalid option.")
+        println!("Invalid option.");
     }
 }
