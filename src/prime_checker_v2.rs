@@ -1,8 +1,10 @@
-use crate::constants::KNOWN_PRIMES;
-use crate::utils::unique_elements_vector;
+#![warn(missing_docs)]
+//! This module contains the functions to check if a number is a prime number or not.
+use crate::constants;
+use crate::utils;
 
 fn check_if_prime(num: i128) -> (bool, Vec<i128>){
-    let known_prime_numbers: [i128; 7] = KNOWN_PRIMES; //List of known prime number; reduces processing time.
+    let known_prime_numbers: [i128; 7] = constants::KNOWN_PRIMES; //List of known prime number; reduces processing time.
 
     let upper_limit: i128 = (num/2) + 1; //We do not need to check beyond the num/2 factor as it will be its highest possible factor.
     let mut divisor: i128 = 2; //Initialize the factor as 2.
@@ -70,7 +72,7 @@ fn check_one_number(num: i128){
 
 fn check_till(num: i128)->Vec<i128>{
     let mut prime_numbers:Vec<i128> = Vec::new();
-    for item in KNOWN_PRIMES{
+    for item in constants::KNOWN_PRIMES{
         prime_numbers.push(item);
     }
 
@@ -93,7 +95,7 @@ fn check_till(num: i128)->Vec<i128>{
             prime_numbers.push(item);
         }
     }
-    prime_numbers = unique_elements_vector(prime_numbers);
+    prime_numbers = utils::unique_elements_vector(prime_numbers);
     prime_numbers.sort();
     return prime_numbers;
 

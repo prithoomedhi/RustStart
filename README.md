@@ -16,7 +16,7 @@ _Rust has been noted for its growth as a newer language and has been the subject
 
 ### Details
 
-|Criteria|Value|
+|Property|Value|
 |---|---|
 |Paradigms|Multi-paradigm: `concurrent`, `functional`, `generic`, `imperative`, `structured`|
 |Designed by|Graydon Hoare|

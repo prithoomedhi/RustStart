@@ -7,7 +7,7 @@ mod utils;
 mod constants;
 
 fn main() {
-    let num: i128 = 7;
+    let num: i128 = 1002321;
     let option:i128 = 1;
     let name = "John";
     hello_world::run(name);
