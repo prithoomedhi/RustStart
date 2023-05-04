@@ -4,7 +4,7 @@
     3. RUST is a block-scoped language.
 */
 
-pub fn run(){
+pub fn run() {
     // Run to console
     println!("\nHello from the `vars.rs` file.");
 

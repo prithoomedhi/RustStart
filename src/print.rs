@@ -1,9 +1,9 @@
 //! This is a print.rs file. It is used to print to the console.
 
-use crate::utils;
 use crate::constants;
+use crate::utils;
 
-pub fn run(){
+pub fn run() {
     // Decalaring Fn variables
     let name = "John";
     let place = "Latveria";
@@ -24,17 +24,27 @@ pub fn run(){
     println!("{} is from {}", name, place);
 
     // Positional arguments
-    println!("{0} is from {1} amd {0} likes to {2}.", name, place, activity);
+    println!(
+        "{0} is from {1} amd {0} likes to {2}.",
+        name, place, activity
+    );
 
     // Named arguments
-    println!("{name} like to play {game}.", name = name, game = game );
+    println!("{name} like to play {game}.", name = name, game = game);
 
     // Placeholder traits
-    println!("Number: {:?}\tBinary: b{:b}\tHexadecimal: x0{:x}\tOctal: x8{:o}", number, number, number, number);
+    println!(
+        "Number: {:?}\tBinary: b{:b}\tHexadecimal: x0{:x}\tOctal: x8{:o}",
+        number, number, number, number
+    );
 
     // Placeholder for DEBUG trait
     println!("DEBUG: {:?}", (12, true, "hello"));
 
     // Basic math
-    println!("{number} + {number} = {sum}", number=number, sum=number+number);
+    println!(
+        "{number} + {number} = {sum}",
+        number = number,
+        sum = number + number
+    );
 }
