@@ -1,7 +1,7 @@
 arg="$1"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        echo "OS: $OSTYPE"
+        # echo "OS: $OSTYPE"
         
         if [[ "$arg" == "release" ]]; then
                 ./target/release/rust_start
@@ -17,7 +17,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         fi
         
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-        echo "OS: Mac OSX ($OSTYPE)"
+        # echo "OS: Mac OSX ($OSTYPE)"
         
         if [[ "$arg" == "release" ]]; then
                 ./target/release/rust_start
@@ -34,7 +34,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
         
 elif [[ "$OSTYPE" == "cygwin" ]]; then
         # POSIX compatibility layer and Linux environment emulation for Windows
-        echo "OS: Cygwin ($OSTYPE)"
+        # echo "OS: Cygwin ($OSTYPE)"
         
         if [[ "$arg" == "release" ]]; then
                 ./target/release/rust_start.exe
@@ -51,7 +51,7 @@ elif [[ "$OSTYPE" == "cygwin" ]]; then
 
 elif [[ "$OSTYPE" == "msys" ]]; then
         # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
-        echo "OS: Windows-MinGW ($OSTYPE)"
+        # echo "OS: Windows-MinGW ($OSTYPE)"
 
         if [[ "$arg" == "release" ]]; then
                 ./target/release/rust_start.exe

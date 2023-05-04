@@ -1,4 +1,5 @@
 #![warn(missing_docs)]
+#![allow(warnings)]
 //! General purpose utility functions.
 
 use rand::{distributions::Uniform, Rng}; // 0.8.5
@@ -50,7 +51,7 @@ pub fn choose_random_element_from_vector<T: std::ops::Add<Output = T> + Copy + s
     //  Returns:
     //      T
 
-    println!("Choosing a random element from the given vector:\t{:?}.", _list);
+    // println!("Choosing a random element from the given vector:\t{:?}.", _list);
     let mut rng = rand::thread_rng();
     let range = Uniform::new(0, _list.len()-1);
     let index:usize = rng.sample(range);
