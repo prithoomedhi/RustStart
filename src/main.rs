@@ -10,8 +10,8 @@ mod constants;
 fn main() {
     let num: i128 = utils::random_integer(constants::MIN_R, constants::MAX_R);
     let option:i128 = utils::random_integer(1, 3);
-    // let num: i128 = 50;
-    // let option:i128 = 2;
+    // let num: i128 = 60;
+    // let option:i128 = 1;
     // let name = "John";
     // hello_world::run(name);
     // print::run();

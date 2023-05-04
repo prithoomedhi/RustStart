@@ -9,5 +9,5 @@ pub const MIN_F:f64 = f64::MIN; // Minimum value of f64
 pub const MAX_F32:f32 = f32::MAX; // Maximum value of f32
 pub const MIN_F32:f32 = f32::MIN; // Minimum value of f32
 
-pub const MIN_R:i128 = -100;
-pub const MAX_R:i128 = 101;
+pub const MIN_R:i128 = -1_000;
+pub const MAX_R:i128 = 1_001;

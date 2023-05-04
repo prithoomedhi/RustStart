@@ -2,6 +2,7 @@
 #![allow(warnings)]
 //! General purpose utility functions.
 
+use colored::*;
 use rand::{distributions::Uniform, Rng}; // 0.8.5
 
 pub fn unique_elements_vector<T: std::ops::Add<Output = T> + std::fmt::Debug + std::cmp::PartialEq>(_list: Vec<T>)->Vec<T>{
@@ -33,8 +34,8 @@ pub fn get_random_list(_min: i128, _max: i128, _length: usize)->Vec<i128>{
     //      _length: usize
     //  Returns:
     //      Vec<i128>
-
-    println!("Generating a list of random numbers between {} and {} of length {}.", _min, _max, _length);
+    let _debug_statement = format!("Generating a list of random numbers between {} and {} of length {}.", _min, _max, _length);
+    println!("{}", _debug_statement.dimmed());
     let mut rng = rand::thread_rng();
     let range = Uniform::new(_min, _max);
     let mut list: Vec<i128> = Vec::new();
@@ -65,8 +66,8 @@ pub fn random_integer(_min: i128, _max: i128)->i128{
     //      _max: i128
     //  Returns:
     //      i128
-
-    println!("Generating a random integer between {} and {}.", _min, _max);
+    let _debug_statement = format!("INFO: Generating a random integer between {} and {}.", _min, _max);
+    println!("{}", _debug_statement.dimmed());
     let mut rng = rand::thread_rng();
     let range = Uniform::new(_min, _max);
     return rng.sample(range);
