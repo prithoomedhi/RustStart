@@ -42,3 +42,11 @@ fn main() {
 1. [Official Documentation](https://www.rust-lang.org/learn)
 2. [Playground](https://play.rust-lang.org/)
 3. [Rust by Example](https://doc.rust-lang.org/rust-by-example/)
+
+## Development Environment Setup
+
+__Note:__ You will require a personal access token to clone the repository.
+
+1. `chmod +x scripts/*` to give all global scripts permission to execute.
+2. `sh scripts/build.sh <release | debug | both>` to build the executable file.
+3. `sh scripts/run.sh <release | debug>`
